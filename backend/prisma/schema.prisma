@@ -1,0 +1,124 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  STUDENT
+  FACULTY
+  ADMIN
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  passwordHash  String
+  role          Role
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  studentProfile Student?
+  facultyProfile Faculty?
+}
+
+model Student {
+  id            String    @id @default(uuid())
+  userId        String    @unique
+  user          User      @relation(fields: [userId], references: [id])
+  rollNumber    String    @unique
+  firstName     String
+  lastName      String
+  branch        String
+  section       String
+  academicYear  Int
+  
+  attendances   Attendance[]
+  results       Result[]
+}
+
+model Faculty {
+  id            String    @id @default(uuid())
+  userId        String    @unique
+  user          User      @relation(fields: [userId], references: [id])
+  facultyId     String    @unique
+  firstName     String
+  lastName      String
+  departmentId  String
+  department    Department @relation(fields: [departmentId], references: [id])
+
+  timetable     Timetable[]
+}
+
+model Department {
+  id            String    @id @default(uuid())
+  name          String
+  code          String    @unique
+  
+  faculty       Faculty[]
+  subjects      Subject[]
+}
+
+model Subject {
+  id            String    @id @default(uuid())
+  name          String
+  code          String    @unique
+  departmentId  String
+  department    Department @relation(fields: [departmentId], references: [id])
+  semester      Int
+
+  attendances   Attendance[]
+  results       Result[]
+  timetable     Timetable[]
+}
+
+model Attendance {
+  id            String    @id @default(uuid())
+  studentId     String
+  student       Student   @relation(fields: [studentId], references: [id])
+  subjectId     String
+  subject       Subject   @relation(fields: [subjectId], references: [id])
+  date          DateTime
+  status        String    // PRESENT, ABSENT
+  enteredBy     String    // Faculty ID
+
+  @@unique([studentId, subjectId, date])
+}
+
+model Result {
+  id            String    @id @default(uuid())
+  studentId     String
+  student       Student   @relation(fields: [studentId], references: [id])
+  subjectId     String
+  subject       Subject   @relation(fields: [subjectId], references: [id])
+  semester      Int
+  internalMarks Float
+  externalMarks Float
+  totalMarks    Float
+  grade         String
+
+  @@unique([studentId, subjectId])
+}
+
+model Notification {
+  id            String    @id @default(uuid())
+  title         String
+  message       String
+  targetRole    Role?     // If null, send to specific targetId
+  targetId      String?   // User ID if targeted specifically
+  createdAt     DateTime  @default(now())
+}
+
+model Timetable {
+  id            String    @id @default(uuid())
+  subjectId     String
+  subject       Subject   @relation(fields: [subjectId], references: [id])
+  facultyId     String
+  faculty       Faculty   @relation(fields: [facultyId], references: [id])
+  dayOfWeek     String    // MONDAY, TUESDAY, etc.
+  startTime     String    // HH:mm format
+  endTime       String    // HH:mm format
+}

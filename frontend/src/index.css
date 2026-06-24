@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased text-slate-900 bg-slate-50 dark:text-slate-50 dark:bg-slate-900 selection:bg-blue-200 dark:selection:bg-blue-900 transition-colors duration-300;
+  }
+}
+
+@layer utilities {
+  /* Global Hover & Click Effects */
+  .interactive-element {
+    @apply transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-lg active:scale-95 active:shadow-sm cursor-pointer;
+  }
+  
+  /* Button specific click effect */
+  button, a {
+    @apply transition-all duration-200 active:scale-95;
+  }
+
+  /* Card floating effect */
+  .floating-card {
+    @apply transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10;
+  }
+}
+
+@theme {
+  --color-primary: #1d4ed8;
+  --color-primary-dark: #1e40af;
+  --color-secondary: #0f172a;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* Dark mode base styles */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #0f172a;
+    color: #f8fafc;
+  }
+}
