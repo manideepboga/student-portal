@@ -34,8 +34,6 @@ const AddUserModal = ({ isOpen, onClose, onSuccess }: AddUserModalProps) => {
     setLoading(true);
 
     try {
-      const token = localStorage.getItem('token'); // Wait, the auth token is stored where? We'll assume the backend doesn't check it yet or we don't send it if not needed. Actually, Redux state holds it, but we can just use axios straight if there's no middleware yet.
-      
       await axios.post('http://localhost:5001/api/users', {
         ...formData,
         role,

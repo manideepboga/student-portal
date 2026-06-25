@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Leaf, Map, Coffee, BookMarked, Wifi, Dumbbell } from 'lucide-react';
+import { ArrowLeft, Leaf, Coffee, BookMarked, Wifi, Dumbbell } from 'lucide-react';
 
 const Environment = () => {
   return (

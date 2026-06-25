@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import DashboardLayout from '../layouts/DashboardLayout';
 import { BookOpen, Users, Award, Save, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';

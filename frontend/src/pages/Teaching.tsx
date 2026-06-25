@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, BookOpen, Cpu, Microscope, Lightbulb, Code, Award } from 'lucide-react';
+import { ArrowLeft, Cpu, Microscope, Lightbulb, Award } from 'lucide-react';
 
 const Teaching = () => {
   return (

@@ -1,4 +1,3 @@
-import React from 'react';
 import DashboardLayout from '../layouts/DashboardLayout';
 import { Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';

@@ -46,7 +46,7 @@ const Users = () => {
   };
 
   return (
-    <DashboardLayout>
+    <DashboardLayout title="Users">
       <div className="mb-8">
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center">
           <UserPlus className="w-6 h-6 mr-2 text-indigo-600" /> Add New User

@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { GraduationCap, BookOpen, Users, MapPin, ChevronRight, Building2, Leaf } from 'lucide-react';
+import { GraduationCap, BookOpen, ChevronRight, Building2, Leaf } from 'lucide-react';
 
 const Navbar = () => (
   <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between text-white border-b border-white/10 bg-blue-950/20 backdrop-blur-sm">

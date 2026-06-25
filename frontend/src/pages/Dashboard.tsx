@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../store';
 import DashboardLayout from '../layouts/DashboardLayout';
@@ -460,7 +459,7 @@ const Dashboard = () => {
   const { user } = useSelector((state: RootState) => state.auth);
 
   return (
-    <DashboardLayout>
+    <DashboardLayout title="Dashboard">
       <motion.div 
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}

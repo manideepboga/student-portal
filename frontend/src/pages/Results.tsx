@@ -1,4 +1,3 @@
-import React from 'react';
 import DashboardLayout from '../layouts/DashboardLayout';
 import { Award, BookOpen } from 'lucide-react';
 
