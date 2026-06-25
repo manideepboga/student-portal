@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "nodemon src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js",
-    "seed": "ts-node src/seed.ts"
+    "start": "npx prisma db push && node dist/seed.js && node dist/index.js",
+    "seed": "node dist/seed.js"
   },
   "keywords": [],
   "author": "",
