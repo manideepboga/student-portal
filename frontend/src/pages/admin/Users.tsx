@@ -28,7 +28,7 @@ const Users = () => {
     setLoading(true);
 
     try {
-      await axios.post('http://localhost:5001/api/users', {
+      await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/users`, {
         ...formData,
         role,
       });
